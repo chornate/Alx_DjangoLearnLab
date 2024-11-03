@@ -2,9 +2,9 @@
 
 ## Retrieve a Book Instance
 
-To retrieve all book instances from the database, you can use the `Book.objects.all()` method.
+To retrieve and display all attributes of the book instance you created, use the `get()` method.
 
 ### Command
 ```python
-retrieved_books = Book.objects.all()
-print(retrieved_books)
+book = Book.objects.get(title="1984")  # Retrieve the book instance by title
+print(book.title, book.author, book.publication_year)
