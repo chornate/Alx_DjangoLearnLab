@@ -10,7 +10,37 @@ from django.shortcuts import render
 from django.http import HttpResponseForbidden
 from django.contrib.auth.decorators import user_passes_test
 from .models import UserProfile
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import permission_required
 
+@permission_required('relationship_app.can_add_book', raise_exception=True)
+def add_book(request):
+    if request.method == "POST":
+        title = request.POST['title']
+        author = request.POST['author']
+        publication_date = request.POST['publication_date']
+        Book.objects.create(title=title, author=author, publication_date=publication_date)
+        return redirect('list_books')
+    return render(request, 'relationship_app/add_book.html')
+
+# Edit a book (only accessible by users with 'can_change_book' permission)
+@permission_required('relationship_app.can_change_book', raise_exception=True)
+def edit_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    if request.method == "POST":
+        book.title = request.POST['title']
+        book.author = request.POST['author']
+        book.publication_date = request.POST['publication_date']
+        book.save()
+        return redirect('list_books')
+    return render(request, 'relationship_app/edit_book.html', {'book': book})
+
+# Delete a book (only accessible by users with 'can_delete_book' permission)
+@permission_required('relationship_app.can_delete_book', raise_exception=True)
+def delete_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    book.delete()
+    return redirect('list_books')
 # Check if the user has the 'Admin' role
 def is_admin(user):
     return user.userprofile.role == 'Admin'
