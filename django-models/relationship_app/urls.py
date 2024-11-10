@@ -4,9 +4,9 @@ from django.contrib.auth import views as auth_views
 from .views import list_books
 
 urlpatterns = [
-    path('add/', views.add_book, name='add_book'),  # Add book view
-    path('edit/<int:book_id>/', views.edit_book, name='edit_book'),  # Edit book view
-    path('delete/<int:book_id>/', views.delete_book, name='delete_book'),  # Delete book view
+    path('add/', views.add_book, name='add_book/'),  # Add book view
+    path('edit/<int:book_id>/', views.edit_book, name='edit_book/'),  # Edit book view
+    path('delete/<int:book_id>/', views.delete_book, name='delete_book/'),  # Delete book view
     path('books/', views.list_books, name='list_books'), 
     path('admin/', views.admin_view, name='admin_view'),
     path('librarian/', views.librarian_view, name='librarian_view'),
