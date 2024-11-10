@@ -1,16 +1,47 @@
+from django.contrib.auth import views as auth_views
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Library
-from .models import Book  # Import both Book and Library models
+from .models import Book  
 from django.views.generic.detail import DetailView
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
+from django.views.generic.detail import DetailView
+from django.contrib.auth.views import LoginView, LogoutView
 
-# Function-based view to list all books
+from .models import Book, Library
+
+
+class LibraryDetailView(DetailView):
+    model = Library
+    template_name = 'relationship_app/library_detail.html'
+    context_object_name = 'library'
+
+
 def list_books(request):
-    books = Book.objects.all()  # Retrieve all books from the database
+    books = Book.objects.all()
     return render(request, 'relationship_app/list_books.html', {'books': books})
 
-# Class-based view to display details of a specific library
+
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+            form.save()  
+            return redirect('login')  
+    else:
+        form = UserCreationForm()
+    return render(request, 'relationship_app/register.html', {'form': form})
+
+
+def list_books(request):
+    books = Book.objects.all()  
+    return render(request, 'relationship_app/list_books.html', {'books': books})
+
 class LibraryDetailView(DetailView):
-    model = Library  # Specify the model for the DetailView
-    template_name = 'relationship_app/library_detail.html'  # Define the template to be used
-    context_object_name = 'library'  # The object will be accessible as 'library' in the template
+    model = Library  
+    template_name = 'relationship_app/library_detail.html'  
+    context_object_name = 'library'  
