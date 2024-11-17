@@ -1,1 +1,1 @@
-This is introduction to Django
+LibraryProject: A Django-based project setup guide

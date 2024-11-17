@@ -1,10 +1,5 @@
-# Delete the Book instance
-
-## Command:
-```python
-retrieved_book.delete()
-print(Book.objects.all())
-
-<QuerySet []>
-
-"book.delete", "from bookshelf.models import Book"
+from bookshelf.models import Book
+book.delete()
+Book.objects.all()
+# Expected Output:
+# <QuerySet []>

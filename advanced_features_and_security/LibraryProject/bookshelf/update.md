@@ -1,9 +1,5 @@
-# Update the Book instance title
-
-## Command:
-```python
-retrieved_book.title = "Nineteen Eighty-Four"
-retrieved_book.save()
-print(retrieved_book)
-
-Nineteen Eighty-Four by George Orwell (1949)
+book.title = "Nineteen Eighty-Four"
+book.save()
+book
+# Expected Output:
+# <Book: Nineteen Eighty-Four by George Orwell (1949)>

@@ -1,4 +1,4 @@
-<!-- templates/relationship_app/add_book.html -->
+<!-- relationship_app/templates/relationship_app/add_book.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +9,7 @@
     <h1>Add a New Book</h1>
     <form method="post">
         {% csrf_token %}
-        <label>Title:</label>
-        <input type="text" name="title">
-        <label>Author:</label>
-        <input type="text" name="author">
-        <label>Published Date:</label>
-        <input type="date" name="published_date">
+        {{ form.as_p }}
         <button type="submit">Add Book</button>
     </form>
 </body>

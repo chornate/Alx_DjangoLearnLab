@@ -1,1 +1,0 @@
-Introduction to Django and Web Frameworks
