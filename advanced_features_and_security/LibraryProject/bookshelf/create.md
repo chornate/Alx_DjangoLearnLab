@@ -1,5 +1,10 @@
+# Create Operation
+
+## Command
+To create a new book entry in the database, execute the following command in the Django shell:
+
+```python
 from bookshelf.models import Book
-book = Book.objects.create(title="1984", author="George Orwell", publication_year=1949)
-book
-# Expected Output:
-# <Book: 1984 by George Orwell (1949)>
+b1 = Book.objects.create(title='1984', author="George Orwell", publication_year=1949)
+
+Book object (2)

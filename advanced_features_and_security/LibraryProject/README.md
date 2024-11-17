@@ -1,1 +1,1 @@
-LibraryProject: A Django-based project setup guide
+this is a read me file

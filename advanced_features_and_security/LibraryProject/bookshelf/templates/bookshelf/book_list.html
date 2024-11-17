@@ -8,6 +8,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>admin view</h1>
+    {%for book in books%}
+        {{book.title}}
+        {{book.author}}
+    {%endfor%}
 </body>
 </html>
